@@ -1,0 +1,36 @@
+<form class="max-w-md mx-auto">
+    <div class="mb-5">
+        <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transaction ID</label>
+        <input type="text" id="base-input" name="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 ">
+        <div class="relative z-0 w-full mb-5">
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Distributor ID</label>
+            <input type="text" id="base-input" name="distributor_id" class="mr-3 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+        </div>
+        <div class="relative z-0 w-full mb-5">
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Manufacturer ID</label>
+            <input type="text" id="base-input" name="manufacturer_id" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500">
+        </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 ">
+        <div class="relative z-0 w-full mb-5">
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
+            <input type="text" id="base-input" name="product_id" class="mr-3 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+        </div>
+        <div class="relative z-0 w-full mb-5">
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+            <input type="text" id="base-input" name="qty" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500">
+        </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 ">
+        <div class="relative z-0 w-full mb-5">
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+            <select type="text" id="base-input" name="status" class="mr-3 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                <option value="accepted">Accepted</option>
+                <option value="pending">Pending</option>
+                <option value="rejected">Rejected</option>
+            </select>
+        </div>
+    </div>
+  </form>
