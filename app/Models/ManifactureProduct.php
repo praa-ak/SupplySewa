@@ -51,4 +51,10 @@ class ManifactureProduct extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    /**
+     * Get all of the retailerOrders for the ManifactureProduct
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+   
 }

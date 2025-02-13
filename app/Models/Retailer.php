@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Retailer extends Authenticatable
@@ -53,5 +54,23 @@ class Retailer extends Authenticatable
     public function distributorproducts(): HasMany
     {
         return $this->hasMany(DistributorProduct::class);
+    }
+    /**
+     * Get the user associated with the Retailer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class,);
+    }
+    /**
+     * Get all of the retailerOrders for the Retailer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function retailerOrders(): HasMany
+    {
+        return $this->hasMany(RetailerOrder::class, );
     }
 }

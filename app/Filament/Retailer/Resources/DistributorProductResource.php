@@ -5,8 +5,10 @@ namespace App\Filament\Retailer\Resources;
 use App\Filament\Retailer\Resources\DistributorProductResource\Pages;
 use App\Filament\Retailer\Resources\DistributorProductResource\RelationManagers;
 use App\Models\DistributorProduct;
+use App\Models\ManifactureProduct;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -24,21 +26,34 @@ class DistributorProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('distributor_id')
-                    ->relationship('distributor', 'name')
+                Forms\Components\TextInput::make('retailer_id')
+                    ->default(Auth::user()->id)
+                    ->readOnly()
+                    ->required(),
+                Forms\Components\Select::make('product_id')
+                // ->relationship('product', 'name', function ($query) {
+                //     return $query->where('distributor_id', Auth::user()->distributor_id);
+                // })
                     ->required(),
                 Forms\Components\TextInput::make('qty')
                     ->required()
                     ->numeric(),
+                    // ->maxValue(fn(callable $get) => $get('qty')), // Dynamically get max_qty set above,
+                Forms\Components\Hidden::make('qty'),
                 Forms\Components\TextInput::make('qr_code')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('status'),
-                Forms\Components\Select::make('product_id')
-                    ->relationship('product', 'name')
-                    ->required(),
-                Forms\Components\Select::make('retailer_id')
-                    ->relationship('retailer', 'name')
+                    ->maxLength(255),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'approved' => 'Approved',
+                        'rejected' => 'Rejected',
+                    ])
+                    ->default('pending')
+                    ->label('Status'),
+                Forms\Components\Select::make('distributor_id')
+                    ->relationship('distributor', 'name', function ($query) {
+                        return $query->where('distributor_id', Auth::guard('retailer')->user()->distributor_id);
+                    })
                     ->required(),
             ]);
     }

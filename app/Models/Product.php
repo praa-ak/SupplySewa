@@ -32,4 +32,17 @@ class Product extends Model
     {
         return $this->hasMany(ManifactureProduct::class);
     }
+    /**
+     * Get all of the distributorOrders for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function distributorOrders(): HasMany
+    {
+        return $this->hasMany(DistributorOrder::class, );
+    }
+    public function retailerOrders(): HasMany
+    {
+        return $this->hasMany(RetailerOrder::class,);
+    }
 }

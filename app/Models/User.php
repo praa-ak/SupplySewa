@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -20,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'manufacturer_id',
+        'distributor_id',
+        'retailer_id',
     ];
 
     /**
@@ -43,5 +47,32 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    /**
+     * Get the manufacturer that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function manufacturer(): BelongsTo
+    {
+        return $this->belongsTo(Manufacturer::class,);
+    }
+    /**
+     * Get the distributor that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function distributor(): BelongsTo
+    {
+        return $this->belongsTo(Distributor::class,);
+    }
+    /**
+     * Get the retailer that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function retailer(): BelongsTo
+    {
+        return $this->belongsTo(Retailer::class, );
     }
 }

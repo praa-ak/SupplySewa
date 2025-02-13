@@ -115,17 +115,10 @@ class DistributorProductResource extends Resource
                 //     ->icon('heroicon-o-printer')
                 //     ->modalSubmitActionLabel('Print')
                 //     ->modalContent(fn(DistributorProduct $distributorProduct): View => view('filament.distributor.qrcode', compact('distributorProduct'))),
-                Action::make('pdf')
-                    ->label('PDF')
-                    ->color('success')
+                Action::make('Print')
                     ->icon('heroicon-o-printer')
-                    ->action(function (DistributorProduct $distributorProduct) {
-                        return response()->streamDownload(function () use ($distributorProduct) {
-                            echo Pdf::loadHtml(
-                                Blade::render('filament.distributor.qrcode', ['distributorProduct' => $distributorProduct])
-                            )->stream();
-                        }, $distributorProduct->id.'.pdf');
-                    }),
+                    ->modalSubmitActionLabel('Print')
+                    ->modalContent(fn(DistributorProduct $distributorProduct): View => view('filament.distributor.qrcode', compact('distributorProduct'))),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

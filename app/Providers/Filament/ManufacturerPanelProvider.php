@@ -27,6 +27,7 @@ class ManufacturerPanelProvider extends PanelProvider
             ->path('manufacturer')
             ->login()
             ->registration()
+            ->profile()
             ->authGuard('manufacturer')
             ->profile()
             ->colors([

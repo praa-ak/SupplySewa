@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Distributor extends Authenticatable
 {
@@ -68,5 +69,32 @@ class Distributor extends Authenticatable
     public function manifactureProduct(): HasMany
     {
         return $this->hasMany(ManifactureProduct::class);
+    }
+    /**
+     * Get the user associated with the Distributor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class,);
+    }
+    /**
+     * Get all of the distributorOrders for the Distributor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function distributorOrders(): HasMany
+    {
+        return $this->hasMany(DistributorOrder::class,);
+    }
+    /**
+     * Get all of the retailerOrders for the Distributor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function retailerOrders(): HasMany
+    {
+        return $this->hasMany(RetailerOrder::class, );
     }
 }
