@@ -35,6 +35,6 @@ class SendProductChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'polarArea';
+        return 'bar';
     }
 }

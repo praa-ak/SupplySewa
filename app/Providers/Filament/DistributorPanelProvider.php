@@ -26,6 +26,7 @@ class DistributorPanelProvider extends PanelProvider
             ->id('distributor')
             ->path('distributor')
             ->login()
+            ->profile()
             ->authGuard('distributor')
             ->colors([
                 'primary' => Color::Blue,
@@ -37,7 +38,7 @@ class DistributorPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Distributor/Widgets'), for: 'App\\Filament\\Distributor\\Widgets')
             ->widgets([
-                
+
             ])
             ->middleware([
                 EncryptCookies::class,

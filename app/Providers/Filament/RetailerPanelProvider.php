@@ -26,6 +26,7 @@ class RetailerPanelProvider extends PanelProvider
             ->id('retailer')
             ->path('retailer')
             ->login()
+            ->profile()
             ->authGuard('retailer')
             ->colors([
                 'primary' => Color::Amber,
@@ -37,7 +38,7 @@ class RetailerPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Retailer/Widgets'), for: 'App\\Filament\\Retailer\\Widgets')
             ->widgets([
-                
+
             ])
             ->middleware([
                 EncryptCookies::class,

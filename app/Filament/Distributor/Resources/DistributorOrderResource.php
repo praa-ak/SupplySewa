@@ -84,7 +84,7 @@ class DistributorOrderResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('payment_method')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('payment_screenshot')
+                Tables\Columns\ImageColumn::make('payment_screenshot')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('distributor.name')
                     ->numeric()

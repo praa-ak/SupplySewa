@@ -18,7 +18,7 @@ class DistributorOrderResource extends Resource
 {
     protected static ?string $model = DistributorOrder::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
     public static function form(Form $form): Form
     {
@@ -54,6 +54,9 @@ class DistributorOrderResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('product.name')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('qty')
                     ->numeric()
                     ->sortable(),
@@ -66,12 +69,9 @@ class DistributorOrderResource extends Resource
                 Tables\Columns\TextColumn::make('distributor.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('manufacturer.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('product.name')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('manufacturer.name')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

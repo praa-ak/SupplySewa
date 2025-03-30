@@ -22,6 +22,7 @@ class RetailerOrderResource extends Resource
     protected static ?string $model = RetailerOrder::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel = 'My Order';
 
     public static function form(Form $form): Form
     {

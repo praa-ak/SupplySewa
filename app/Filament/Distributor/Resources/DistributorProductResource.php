@@ -85,7 +85,7 @@ class DistributorProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('distributor.name')
+                Tables\Columns\TextColumn::make('distributor_id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('qty')
@@ -97,6 +97,16 @@ class DistributorProductResource extends Resource
                 Tables\Columns\TextColumn::make('retailer.name')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                ->searchable()
+                    ->sortable()
+                    ->default('pending')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'approved' => 'success',
+                        'rejected' => 'danger',
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -107,6 +107,7 @@ class ManifactureProductResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('product.name')
                     ->numeric()
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('manufacturer.name')
                     ->numeric()

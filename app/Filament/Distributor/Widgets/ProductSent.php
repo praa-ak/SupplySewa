@@ -2,28 +2,26 @@
 
 namespace App\Filament\Distributor\Widgets;
 
-use App\Models\ManifactureProduct;
+use App\Models\DistributorProduct;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\Auth;
 
-class DistributorChart extends ChartWidget
+class ProductSent extends ChartWidget
 {
-    protected static ?string $heading = 'Product Received';
-    protected  static ?int $sort = 2;
-    protected int| array| string $columnSpan = 'full';
+    protected static ?string $heading = 'Product Sent';
 
     protected function getData(): array
     {
         $products = [];
 
         foreach (range(1, 12) as $month) {
-            $products[] = ManifactureProduct::where('distributor_id',Auth::guard('distributor')->user()->id)->where('status', 'approved')->whereMonth('created_at', $month)->whereYear('created_at', now()->year)->count();
+            $products[] = DistributorProduct::where('distributor_id',Auth::guard('distributor')->user()->id)->where('status', 'approved')->whereMonth('created_at', $month)->whereYear('created_at', now()->year)->count();
         }
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Product Received',
+                    'label' => 'Product Sent',
                     'data' => $products,
                 ],
             ],
@@ -33,6 +31,6 @@ class DistributorChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'bar';
+        return 'line';
     }
 }

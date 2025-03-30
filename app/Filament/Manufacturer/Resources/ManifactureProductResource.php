@@ -27,7 +27,7 @@ class ManifactureProductResource extends Resource
 {
     protected static ?string $model = ManifactureProduct::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-arrow-up-on-square';
     protected static ?string $modelLabel = 'Send Product';
 
     public static function form(Form $form): Form
@@ -93,9 +93,9 @@ class ManifactureProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('manufacturer_id')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('manufacturer_id')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('qty')
                     ->numeric()
                     ->sortable(),
